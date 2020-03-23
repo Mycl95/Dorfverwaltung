@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B89052F0-79A6-4612-AFC1-B8E7CC62F43D}</ProjectGuid>
+    <ProjectTypeGuids>{A3F8F2AB-B479-4A4A-A458-A89E7DC349F1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Dorfverwaltung</RootNamespace>
+    <AssemblyName>Dorfverwaltung</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkIdentifier>Xamarin.Mac</TargetFrameworkIdentifier>
+    <MonoMacResourcePrefix>Resources</MonoMacResourcePrefix>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <EnableCodeSigning>false</EnableCodeSigning>
+    <CodeSigningKey>Mac Developer</CodeSigningKey>
+    <CreatePackage>false</CreatePackage>
+    <EnablePackageSigning>false</EnablePackageSigning>
+    <IncludeMonoRuntime>false</IncludeMonoRuntime>
+    <UseSGen>true</UseSGen>
+    <UseRefCounting>true</UseRefCounting>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <EnableCodeSigning>false</EnableCodeSigning>
+    <CreatePackage>true</CreatePackage>
+    <EnablePackageSigning>false</EnablePackageSigning>
+    <IncludeMonoRuntime>true</IncludeMonoRuntime>
+    <UseSGen>true</UseSGen>
+    <UseRefCounting>true</UseRefCounting>
+    <CodeSignEntitlements>Entitlements.plist</CodeSignEntitlements>
+    <LinkMode>SdkOnly</LinkMode>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.Mac" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\zwerg_colored-16.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\zwerg_colored-32.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\zwerg_colored-32-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\zwerg_colored-64.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\zwerg_colored-128.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\zwerg_colored-256.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\zwerg_colored-256-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\zwerg_colored-512.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\zwerg_colored-512-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\zwerg_colored-1024.png" />
+    <ImageAsset Include="Assets.xcassets\DwarfAlt.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\DwarfAlt.imageset\dwarf.png" />
+    <ImageAsset Include="Assets.xcassets\DwarfAlt.imageset\dwarf_darktheme.png" />
+    <ImageAsset Include="Assets.xcassets\Dwarf.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Dwarf.imageset\dwarf_darktheme.png" />
+    <ImageAsset Include="Assets.xcassets\Dwarf.imageset\zwerg_colored-256.png" />
+    <ImageAsset Include="Assets.xcassets\Axe.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Axe.imageset\axe_darktheme.png" />
+    <ImageAsset Include="Assets.xcassets\Axe.imageset\axe.png" />
+    <ImageAsset Include="Assets.xcassets\Warhammer.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Warhammer.imageset\warhammer_darktheme.png" />
+    <ImageAsset Include="Assets.xcassets\Warhammer.imageset\warhammer.png" />
+    <ImageAsset Include="Assets.xcassets\Sword.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Sword.imageset\sword_darktheme.png" />
+    <ImageAsset Include="Assets.xcassets\Sword.imageset\sword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="Classes\" />
+    <Folder Include="Assets.xcassets\DwarfAlt.imageset\" />
+    <Folder Include="Assets.xcassets\Dwarf.imageset\" />
+    <Folder Include="Assets.xcassets\Axe.imageset\" />
+    <Folder Include="Assets.xcassets\Warhammer.imageset\" />
+    <Folder Include="Assets.xcassets\Sword.imageset\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+    <None Include="Entitlements.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="ViewController.cs" />
+    <Compile Include="ViewController.designer.cs">
+      <DependentUpon>ViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\DwarfModel.cs" />
+    <Compile Include="Classes\ItemModel.cs" />
+    <Compile Include="Classes\Model.cs" />
+    <Compile Include="Classes\ReplaceViewSegue.cs" />
+    <Compile Include="Classes\TribeModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Main.storyboard" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
+</Project>
