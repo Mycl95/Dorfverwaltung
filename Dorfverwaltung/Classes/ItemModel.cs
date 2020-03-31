@@ -49,11 +49,11 @@ namespace Dorfverwaltung
             {
                 WillChangeValue("MagicValue");
                 _owner?.WillChangeValue("Power");
-                _owner?.Tribe?.WillChangePower();
+                _owner?.Tribe?.WillChangePowerAndTaxes();
                 _magicValue = value;
                 DidChangeValue("MagicValue");
                 _owner?.DidChangeValue("Power");
-                _owner?.Tribe?.DidChangePower();
+                _owner?.Tribe?.DidChangePowerAndTaxes();
             }
         }
 

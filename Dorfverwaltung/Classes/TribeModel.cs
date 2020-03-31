@@ -96,12 +96,12 @@ namespace Dorfverwaltung
             if (_dwarfs.Contains(dwarf)) return;
             
             WillChangeValue("Dwarfs");
-            WillChangePower();
+            WillChangePowerAndTaxes();
             _dwarfs.Add(dwarf);
             dwarf.Tribe?.RemoveDwarf(dwarf);
             dwarf.Tribe = this;
             DidChangeValue("Dwarfs");
-            DidChangePower();
+            DidChangePowerAndTaxes();
             
         }
 
@@ -120,21 +120,21 @@ namespace Dorfverwaltung
             if (!_dwarfs.Contains(dwarf)) return;
             
             WillChangeValue("Dwarfs");
-            WillChangePower();
+            WillChangePowerAndTaxes();
             _dwarfs.RemoveObject((nint)_dwarfs.IndexOf(dwarf));
             dwarf.Tribe = null;
             DidChangeValue("Dwarfs");
-            DidChangePower();
+            DidChangePowerAndTaxes();
             
         }
 
-        public void WillChangePower()
+        public void WillChangePowerAndTaxes()
         {
             WillChangeValue("Power");
             WillChangeValue("Taxes");
         }
 
-        public void DidChangePower()
+        public void DidChangePowerAndTaxes()
         {
             DidChangeValue("Power");
             DidChangeValue("Taxes");

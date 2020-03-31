@@ -67,11 +67,11 @@ namespace Dorfverwaltung
             
             WillChangeValue("Items");
             WillChangeValue("Power");
-            Tribe?.WillChangePower();
+            Tribe?.WillChangePowerAndTaxes();
             _items.Add(item);
             item.Owner?.RemoveItem(item);
             item.Owner = this;
-            Tribe?.DidChangePower();
+            Tribe?.DidChangePowerAndTaxes();
             DidChangeValue("Items");
             DidChangeValue("Power");
             
@@ -93,10 +93,10 @@ namespace Dorfverwaltung
             
             WillChangeValue("Items");
             WillChangeValue("Power");
-            Tribe?.WillChangePower();
+            Tribe?.WillChangePowerAndTaxes();
             _items.RemoveObject((nint)_items.IndexOf(item));
             item.Owner = null;
-            Tribe?.DidChangePower();
+            Tribe?.DidChangePowerAndTaxes();
             DidChangeValue("Items");
             DidChangeValue("Power");
             
