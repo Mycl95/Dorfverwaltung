@@ -254,7 +254,7 @@
       "idiom": "mac"
     },
     {
-      "filename": "dwarf_darktheme.png",
+      "filename": "dwarf_darktheme-64-1.png",
       "appearances": [
         {
           "appearance": "luminosity",
@@ -265,6 +265,7 @@
       "idiom": "mac"
     },
     {
+      "filename": "dwarf_darktheme-128.png",
       "appearances": [
         {
           "appearance": "luminosity",
@@ -472,7 +473,7 @@
       "idiom": "mac"
     },
     {
-      "filename": "dwarf.png",
+      "filename": "dwarf_alt-64-1.png",
       "appearances": [
         {
           "appearance": "luminosity",
@@ -483,6 +484,7 @@
       "idiom": "mac"
     },
     {
+      "filename": "dwarf_alt-128.png",
       "appearances": [
         {
           "appearance": "luminosity",

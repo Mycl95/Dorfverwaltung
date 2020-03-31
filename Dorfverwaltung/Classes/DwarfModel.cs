@@ -12,7 +12,7 @@ namespace Dorfverwaltung
         private nuint _age;
         private readonly NSMutableArray<ItemModel> _items 
             = new NSMutableArray<ItemModel>();
-        private bool _isLeader;
+        private TribeModel _tribe;
 
         [Export("Name")]
         public string Name
@@ -39,16 +39,7 @@ namespace Dorfverwaltung
         }
 
         [Export("IsLeader")]
-        public bool IsLeader
-        {
-            get => _isLeader;
-            set
-            {
-                WillChangeValue("IsLeader");
-                _isLeader = value;
-                DidChangeValue("IsLeader");
-            }
-        }
+        public bool IsLeader => _tribe?.Leader == this;
 
         [Export("Items")]
         public NSMutableArray Items => _items;
@@ -57,38 +48,58 @@ namespace Dorfverwaltung
         public nuint Power => 
             _items.Aggregate((nuint)0, (a, item) => a + item.MagicValue);
 
+        [Export("Tribe")]
+        public TribeModel Tribe
+        {
+            get => _tribe;
+            set
+            {
+                WillChangeValue("Tribe");
+                _tribe = value;
+                DidChangeValue("Tribe");
+            }
+        }
+
         [Export("addItem:")]
         public void AddItem(ItemModel item)
         {
+            if (_items.Contains(item)) return;
+            
             WillChangeValue("Items");
             WillChangeValue("Power");
-            if (!_items.Contains(item))
-                _items.Add(item);
+            Tribe?.WillChangePower();
+            _items.Add(item);
+            item.Owner?.RemoveItem(item);
+            item.Owner = this;
+            Tribe?.DidChangePower();
             DidChangeValue("Items");
             DidChangeValue("Power");
+            
         }
         
         [Export("addItems:")]
         public void AddItems(NSArray<ItemModel> items)
         {
-            WillChangeValue("Items");
-            WillChangeValue("Power");
             foreach (var item in items)
-                _items.Add(item);
-            DidChangeValue("Items");
-            DidChangeValue("Power");
+            {
+                AddItem(item);
+            }
         }
         
         [Export("removeItem:")]
         public void RemoveItem(ItemModel item)
         {
+            if (!_items.Contains(item)) return;
+            
             WillChangeValue("Items");
             WillChangeValue("Power");
-            if (_items.Contains(item))
-            {
-            }
+            Tribe?.WillChangePower();
+            _items.RemoveObject((nint)_items.IndexOf(item));
+            item.Owner = null;
+            Tribe?.DidChangePower();
             DidChangeValue("Items");
             DidChangeValue("Power");
+            
         }
         
         public DwarfModel()

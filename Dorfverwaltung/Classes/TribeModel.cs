@@ -14,6 +14,7 @@ namespace Dorfverwaltung
         private nuint _leaderSince;
         private readonly NSMutableArray<DwarfModel> _dwarfs 
             = new NSMutableArray<DwarfModel>();
+        private nfloat _taxes;
         
         [Export("Name")]
         public string Name
@@ -39,24 +40,21 @@ namespace Dorfverwaltung
             }
         }
         
-        [Export("FoundingString")]
-        public string FoundingString
-            => $"{Founding} {(Founding >= 0 ? "ndK" : "vdK")}";
-        
         [Export("Leader")]
         public DwarfModel Leader
         {
             get => _leader;
             set
             {
-                if (Dwarfs.Contains(value))
+                if (value == null || Dwarfs.Contains(value))
                 {
                     WillChangeValue("Leader");
-                    if(_leader != null)
-                        _leader.IsLeader = false;
+                    Leader?.WillChangeValue("IsLeader");
+                    value?.WillChangeValue("IsLeader");
                     _leader = value;
-                    _leader.IsLeader = true;
                     DidChangeValue("Leader");
+                    Leader?.DidChangeValue("IsLeader");
+                    value?.DidChangeValue("IsLeader");
                 }
             }
         }
@@ -79,43 +77,67 @@ namespace Dorfverwaltung
         [Export("Power")]
         public nuint Power => 
             _dwarfs.Aggregate((nuint)0, (a, dwarf) => a + dwarf.Power);
+
+        [Export("Taxes")]
+        public nfloat Taxes
+        {
+            get => Power * _taxes;
+            set
+            {
+                WillChangeValue("Taxes");
+                _taxes = value;
+                DidChangeValue("Taxes");
+            }
+        }
         
         [Export("addDwarf:")]
         public void AddDwarf(DwarfModel dwarf)
         {
+            if (_dwarfs.Contains(dwarf)) return;
+            
             WillChangeValue("Dwarfs");
-            WillChangeValue("Power");
-            if (!_dwarfs.Contains(dwarf))
-                _dwarfs.Add(dwarf);
+            WillChangePower();
+            _dwarfs.Add(dwarf);
+            dwarf.Tribe?.RemoveDwarf(dwarf);
+            dwarf.Tribe = this;
             DidChangeValue("Dwarfs");
-            DidChangeValue("Power");
+            DidChangePower();
+            
         }
 
         [Export("addDwarfs:")]
         public void AddDwarfs(NSArray<DwarfModel> dwarfs)
         {
-            WillChangeValue("Dwarfs");
-            WillChangeValue("Power");
             foreach (var dwarf in dwarfs)
-                _dwarfs.Add(dwarf);
-            DidChangeValue("Dwarfs");
-            DidChangeValue("Power");
+            {
+                AddDwarf(dwarf);
+            }
         }
         
         [Export("removeDwarf:")]
         public void RemoveDwarf(DwarfModel dwarf)
         {
+            if (!_dwarfs.Contains(dwarf)) return;
+            
             WillChangeValue("Dwarfs");
-            WillChangeValue("Power");
-            if (_dwarfs.Contains(dwarf))
-            {
-            }
+            WillChangePower();
+            _dwarfs.RemoveObject((nint)_dwarfs.IndexOf(dwarf));
+            dwarf.Tribe = null;
             DidChangeValue("Dwarfs");
-            DidChangeValue("Power");
+            DidChangePower();
+            
         }
 
-        public TribeModel()
+        public void WillChangePower()
         {
+            WillChangeValue("Power");
+            WillChangeValue("Taxes");
+        }
+
+        public void DidChangePower()
+        {
+            DidChangeValue("Power");
+            DidChangeValue("Taxes");
         }
     }
 }

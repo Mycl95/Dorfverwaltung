@@ -27,6 +27,8 @@
     <IncludeMonoRuntime>false</IncludeMonoRuntime>
     <UseSGen>true</UseSGen>
     <UseRefCounting>true</UseRefCounting>
+    <AOTMode>None</AOTMode>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,6 +44,8 @@
     <UseRefCounting>true</UseRefCounting>
     <CodeSignEntitlements>Entitlements.plist</CodeSignEntitlements>
     <LinkMode>SdkOnly</LinkMode>
+    <AOTMode>None</AOTMode>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -49,42 +53,58 @@
     <Reference Include="Xamarin.Mac" />
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\zwerg_colored-16.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\zwerg_colored-32.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\zwerg_colored-32-1.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\zwerg_colored-64.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\zwerg_colored-128.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\zwerg_colored-256.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\zwerg_colored-256-1.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\zwerg_colored-512.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\zwerg_colored-512-1.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\zwerg_colored-1024.png" />
-    <ImageAsset Include="Assets.xcassets\DwarfAlt.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\DwarfAlt.imageset\dwarf.png" />
-    <ImageAsset Include="Assets.xcassets\DwarfAlt.imageset\dwarf_darktheme.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\dwarf-16.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\dwarf-32.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\dwarf-32-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\dwarf-64.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\dwarf-128.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\dwarf-256.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\dwarf-256-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\dwarf-512.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\dwarf-512-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\dwarf-1024.png" />
     <ImageAsset Include="Assets.xcassets\Dwarf.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Dwarf.imageset\dwarf_darktheme.png" />
-    <ImageAsset Include="Assets.xcassets\Dwarf.imageset\zwerg_colored-256.png" />
+    <ImageAsset Include="Assets.xcassets\DwarfAlt.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Axe.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Axe.imageset\axe_darktheme.png" />
-    <ImageAsset Include="Assets.xcassets\Axe.imageset\axe.png" />
-    <ImageAsset Include="Assets.xcassets\Warhammer.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Warhammer.imageset\warhammer_darktheme.png" />
-    <ImageAsset Include="Assets.xcassets\Warhammer.imageset\warhammer.png" />
+    <ImageAsset Include="Assets.xcassets\Axe.imageset\axe_darktheme-32.png" />
+    <ImageAsset Include="Assets.xcassets\Axe.imageset\axe_darktheme-64.png" />
     <ImageAsset Include="Assets.xcassets\Sword.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Sword.imageset\sword_darktheme.png" />
-    <ImageAsset Include="Assets.xcassets\Sword.imageset\sword.png" />
+    <ImageAsset Include="Assets.xcassets\Axe.imageset\axe-32-1.png" />
+    <ImageAsset Include="Assets.xcassets\Axe.imageset\axe-64.png" />
+    <ImageAsset Include="Assets.xcassets\Sword.imageset\sword_darktheme-32-1.png" />
+    <ImageAsset Include="Assets.xcassets\Sword.imageset\sword_darktheme-64.png" />
+    <ImageAsset Include="Assets.xcassets\Sword.imageset\sword-32.png" />
+    <ImageAsset Include="Assets.xcassets\Sword.imageset\sword-64.png" />
+    <ImageAsset Include="Assets.xcassets\Wand.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Wand.imageset\wand_darktheme-32.png" />
+    <ImageAsset Include="Assets.xcassets\Wand.imageset\wand_darktheme-64.png" />
+    <ImageAsset Include="Assets.xcassets\Wand.imageset\wand-32.png" />
+    <ImageAsset Include="Assets.xcassets\Wand.imageset\wand-64.png" />
+    <ImageAsset Include="Assets.xcassets\Warhammer.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Warhammer.imageset\warhammer_darktheme-32.png" />
+    <ImageAsset Include="Assets.xcassets\Warhammer.imageset\warhammer_darktheme-64.png" />
+    <ImageAsset Include="Assets.xcassets\Warhammer.imageset\warhammer-32.png" />
+    <ImageAsset Include="Assets.xcassets\Warhammer.imageset\warhammer-64.png" />
+    <ImageAsset Include="Assets.xcassets\Dwarf.imageset\dwarf-64-1.png" />
+    <ImageAsset Include="Assets.xcassets\Dwarf.imageset\dwarf-128.png" />
+    <ImageAsset Include="Assets.xcassets\DwarfAlt.imageset\dwarf_alt-64-1.png" />
+    <ImageAsset Include="Assets.xcassets\DwarfAlt.imageset\dwarf_alt-128.png" />
+    <ImageAsset Include="Assets.xcassets\DwarfAlt.imageset\dwarf_darktheme-64-1.png" />
+    <ImageAsset Include="Assets.xcassets\DwarfAlt.imageset\dwarf_darktheme-128.png" />
+    <ImageAsset Include="Assets.xcassets\Dwarf.imageset\dwarf_darktheme-64-1.png" />
+    <ImageAsset Include="Assets.xcassets\Dwarf.imageset\dwarf_darktheme-128.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Classes\" />
-    <Folder Include="Assets.xcassets\DwarfAlt.imageset\" />
     <Folder Include="Assets.xcassets\Dwarf.imageset\" />
+    <Folder Include="Assets.xcassets\DwarfAlt.imageset\" />
     <Folder Include="Assets.xcassets\Axe.imageset\" />
-    <Folder Include="Assets.xcassets\Warhammer.imageset\" />
     <Folder Include="Assets.xcassets\Sword.imageset\" />
+    <Folder Include="Assets.xcassets\Wand.imageset\" />
+    <Folder Include="Assets.xcassets\Warhammer.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -102,6 +122,10 @@
     <Compile Include="Classes\Model.cs" />
     <Compile Include="Classes\ReplaceViewSegue.cs" />
     <Compile Include="Classes\TribeModel.cs" />
+    <Compile Include="WindowController.cs" />
+    <Compile Include="WindowController.designer.cs">
+      <DependentUpon>WindowController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />
